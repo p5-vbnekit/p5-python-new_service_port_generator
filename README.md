@@ -13,9 +13,9 @@ Successfully installed p5.new-service-port-generator-0.0.2
 # Uninstall
 `pip uninstall p5.new-service-port-generator`
 ```
-Uninstalling p5.new-service-port-generator-0.0.0:
+Uninstalling p5.new-service-port-generator-0.0.2:
   Would remove:
-    /home/user/venv/lib/python3.8/site-packages/p5.new_service_port_generator-0.0.0-py3.8.egg-info
+    /home/user/venv/lib/python3.8/site-packages/p5.new_service_port_generator-0.0.2-py3.8.egg-info
     /home/user/venv/lib/python3.8/site-packages/p5/new_service_port_generator/*
 Proceed (y/n)? y
   Successfully uninstalled p5.new-service-port-generator-0.0.2
