@@ -8,18 +8,12 @@ import random
 def _validate_excluded_port(value):
     if not isinstance(value, int): raise TypeError("invalid port, [0:65535] integer expected")
     if not (0 <= value): raise ValueError("invalid port, [0:65535] integer expected")
-    if not (65535 > value): raise ValueError("invalid port, [0:65535] integer expected")
+    if not (65536 > value): raise ValueError("invalid port, [0:65535] integer expected")
 
 
 def _validate_excluded_range(minimum, maximum):
-    if not isinstance(minimum, int): raise TypeError("invalid minimum, [0:65535] integer expected")
-    if not (0 <= minimum): raise ValueError("invalid minimum, [0:65535] integer expected")
-    if not (65535 >= minimum): raise ValueError("invalid minimum, [0:65535] integer expected")
-
-    if not isinstance(maximum, int): raise TypeError("invalid maximum, [0, 65535] integer expected")
-    if not (0 <= maximum): raise ValueError("invalid maximum, [0:65535] integer expected")
-    if not (65535 >= maximum): raise ValueError("invalid maximum, [0:65535] integer expected")
-
+    _validate_excluded_port(minimum)
+    _validate_excluded_port(maximum)
     if not (minimum < maximum): raise ValueError("invalid range")
 
 
