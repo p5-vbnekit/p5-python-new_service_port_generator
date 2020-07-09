@@ -1,8 +1,9 @@
 # p5-python-new_service_port_generator
 Random port generator for new tcp/udp service.
 
-# Source code
-Upstream on [GitHub](https://github.com/p5-vbnekit/p5-python-new_service_port_generator).
+# References
+- Project page on [PyPi](https://pypi.org/project/p5.new-service-port-generator/).
+- Source code upstream on [GitHub](https://github.com/p5-vbnekit/p5-python-new_service_port_generator).
 
 # Install
 - call `pip install p5.new_service_port_generator`
