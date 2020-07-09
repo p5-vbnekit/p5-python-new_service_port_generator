@@ -26,9 +26,9 @@ def _validate_excluded_range(minimum, maximum):
 def _make_default_excluded():
     _list = [
         (0, 1024),  # common system reserved
-        (1024, 4999),  # BSD
-        (1025, 5000),  # Windows (before Vista)
-        (49152, 65535),  # IANA
+        (1024, 4999),  # BSD dynamic ports
+        (1025, 5000),  # Windows dynamic ports (before Vista)
+        (49152, 65535),  # IANA dynamic ports
         (32768, 61000)  # Linux dynamic ports: /proc/sys/net/ipv4/ip_local_port_range
     ]
 
