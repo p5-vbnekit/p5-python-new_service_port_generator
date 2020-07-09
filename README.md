@@ -7,7 +7,7 @@ Random port generator for new tcp/udp service
 Processing /home/user/src/python-new_service_port_generator
 Installing collected packages: p5.new-service-port-generator
   Running setup.py install for p5.new-service-port-generator ... done
-Successfully installed p5.new-service-port-generator-0.0.0
+Successfully installed p5.new-service-port-generator-0.0.2
 ```
 
 # Uninstall
@@ -18,7 +18,7 @@ Uninstalling p5.new-service-port-generator-0.0.0:
     /home/user/src/python-new_service_port_generator/venv/lib/python3.8/site-packages/p5.new_service_port_generator-0.0.0-py3.8.egg-info
     /home/user/src/python-new_service_port_generator/venv/lib/python3.8/site-packages/p5/new_service_port_generator/*
 Proceed (y/n)? y
-  Successfully uninstalled p5.new-service-port-generator-0.0.0
+  Successfully uninstalled p5.new-service-port-generator-0.0.2
 ```
 
 # Example
