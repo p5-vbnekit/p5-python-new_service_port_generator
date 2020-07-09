@@ -9,12 +9,12 @@ Random port generator for new tcp/udp service.
 - call `pip install p5.new_service_port_generator`
 ```
 Collecting p5.new_service_port_generator
-  Downloading p5.new_service_port_generator-0.0.3.tar.gz
+  Downloading p5.new_service_port_generator-0.0.4.tar.gz
 ```
 ```
 Successfully built p5.new-service-port-generator
 Installing collected packages: p5.new-service-port-generator
-Successfully installed p5.new-service-port-generator-0.0.3
+Successfully installed p5.new-service-port-generator-0.0.4
 ```
 - or call `pip install .` in source directory
 ```
@@ -23,25 +23,25 @@ Processing /home/user/src/p5-python-new_service_port_generator
 ```
 Successfully built p5.new-service-port-generator
 Installing collected packages: p5.new-service-port-generator
-Successfully installed p5.new-service-port-generator-0.0.3
+Successfully installed p5.new-service-port-generator-0.0.4
 ```
 
 # Uninstall
 call `pip uninstall p5.new_service_port_generator`
 ```
-Uninstalling p5.new-service-port-generator-0.0.3:
+Uninstalling p5.new-service-port-generator-0.0.4:
   Would remove:
-    /home/user/venv/lib/python3.8/site-packages/p5.new_service_port_generator-0.0.3-py3.8.egg-info
+    /home/user/venv/lib/python3.8/site-packages/p5.new_service_port_generator-0.0.4-py3.8.egg-info
     /home/user/venv/lib/python3.8/site-packages/p5/new_service_port_generator/*
 Proceed (y/n)? y
-  Successfully uninstalled p5.new-service-port-generator-0.0.3
+  Successfully uninstalled p5.new-service-port-generator-0.0.4
 ```
 
 # Example
 Try:
-- [`example.py`](https://github.com/p5-vbnekit/p5-python-new_service_port_generator/blob/v0.0.3/example.py)
+- [`example.py`](https://github.com/p5-vbnekit/p5-python-new_service_port_generator/blob/v0.0.4/example.py)
 - or this:
-```python
+```
 import sys
 
 from p5.new_service_port_generator import make as _make_generator
