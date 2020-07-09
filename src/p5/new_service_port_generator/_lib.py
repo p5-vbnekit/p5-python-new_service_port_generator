@@ -103,12 +103,14 @@ class Object(object):
     @property
     def selector(self): return self.__selector
 
-    def __iter__(self, selector = None):
-        while self.__pool:
-            if selector is None: selector = self.__selector
-            _item = selector(self.__pool)
-            self.__pool.remove(_item)
-            yield _item
+    def __iter__(self):
+        while self.__pool: yield self.__call__()
+
+    def __call__(self, selector = None):
+        if selector is None: selector = self.__selector
+        _item = selector(self.__pool)
+        self.__pool.remove(_item)
+        return _item
 
     def __init__(self, source = None, selector = None):
         super().__init__()
