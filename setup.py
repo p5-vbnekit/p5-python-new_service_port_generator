@@ -4,6 +4,10 @@
 import setuptools
 
 
+def _make_long_description():
+    with open("README.md", "r") as _stream: return _stream.read()
+
+
 setuptools.setup(
     name = "p5.new_service_port_generator",
     url = "https://github.com/p5-vbnekit/p5-python-new_service_port_generator",
@@ -11,6 +15,7 @@ setuptools.setup(
     version = "0.0.0",
     author = "p5-vbnekit",
     author_email = "vbnekit@gmail.com",
+    long_description = _make_long_description(),
     package_dir = {"": "src"},
     packages = setuptools.find_namespace_packages(where = "src"),
     setup_requires = ("wheel", ),
