@@ -5,16 +5,20 @@ import socket
 import random
 
 
-def _validate_excluded_port(value):
+def _validate_port(value):
     if not isinstance(value, int): raise TypeError("invalid port, [0:65535] integer expected")
     if not (0 <= value): raise ValueError("invalid port, [0:65535] integer expected")
     if not (65536 > value): raise ValueError("invalid port, [0:65535] integer expected")
 
 
-def _validate_excluded_range(minimum, maximum):
-    _validate_excluded_port(minimum)
-    _validate_excluded_port(maximum)
-    if not (minimum < maximum): raise ValueError("invalid range")
+def _validate_port_range(minimum, maximum):
+    try:
+        try: _validate_port(minimum)
+        except Exception: raise ValueError("invalid minimum")
+        try: _validate_port(maximum)
+        except Exception: raise ValueError("invalid maximum")
+        if not (minimum < maximum): raise ValueError("minimum is not less than maximum")
+    except Exception: raise ValueError("invalid range")
 
 
 def _make_default_excluded():
@@ -62,13 +66,15 @@ def _make_default_excluded():
     return tuple(_list)
 
 
-DEFAULT_SOURCE = range(0, 65535)
-DEFAULT_EXCLUDED = _make_default_excluded()
+class Defaults(object):
+    source = range(0, 65535)
+    excluded = _make_default_excluded()
+    selector = random.choice
 
 
 def make_pool(source = None, excluded = None):
-    if source is None: source = DEFAULT_SOURCE
-    if excluded is None: excluded = DEFAULT_EXCLUDED
+    if source is None: source = Defaults.source
+    if excluded is None: excluded = Defaults.excluded
 
     _excluded = set()
 
@@ -76,18 +82,26 @@ def make_pool(source = None, excluded = None):
         def _parse_one(item):
             try: _minimum, _maximum = item
             except TypeError:
-                _validate_excluded_port(item)
+                _validate_port(item)
                 _excluded.add(item)
                 return
-            _validate_excluded_range(_minimum, _maximum)
+            _validate_port_range(minimum = _minimum, maximum = _maximum)
             for _port in range(_minimum, 1 + _maximum): _excluded.add(_port)
         for _item in excluded: _parse_one(_item)
 
     _parse_excluded()
-    return list([_port for _port in source if not (_port in _excluded)])
+
+    def _make_result():
+        _result = []
+        for _port in source:
+            _validate_port(_port)
+            if not (_port in _excluded): _result.append(_port)
+        return _result
+
+    return _make_result()
 
 
-DEFAULT_POOL = make_pool()
+Defaults.source = tuple(make_pool())
 
 
 class Object(object):
@@ -108,8 +122,8 @@ class Object(object):
 
     def __init__(self, source = None, selector = None):
         super().__init__()
-        self.__pool = make_pool(source = source)
-        self.__selector = random.choice if (selector is None) else selector
+        self.__pool = make_pool(source = source, excluded = tuple())
+        self.__selector = Defaults.selector if (selector is None) else selector
 
 
 def make(*args, **kwargs): return Object(*args, **kwargs)
